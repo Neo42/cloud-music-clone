@@ -1,0 +1,49 @@
+.user {
+  width: 100%;
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.user-info {
+  width: fit-content;
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  display: inline-block;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  border: none;
+}
+
+.name {
+  display: inline-block;
+  font-size: 8px;
+  margin-left: 12px;
+  color: #666;
+  height: 100%;
+  line-height: 34px;
+}
+
+button {
+  box-sizing: border-box;
+  width: 76px;
+  height: 28px;
+  border: 1px solid #999;
+  border-radius: 28px;
+  background-color: #ffffff;
+  display: grid;
+  place-items: center;
+  outline: none;
+}
+
+span {
+  font-size: 13px;
+  line-height: 13px;
+}

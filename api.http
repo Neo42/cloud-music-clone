@@ -1,0 +1,12 @@
+@BASE_URL = http://8.210.66.180:3000
+
+###
+GET {{BASE_URL}}/homepage/block/page
+
+###
+GET {{BASE_URL}}/user/detail?uid=102283467
+
+###
+GET {{BASE_URL}}/toplist/detail
+
+19723756

@@ -1,0 +1,27 @@
+.search {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid transparent;
+  background-color: rgb(245, 245, 245);
+  color: rgb(135, 135, 135);
+  font-size: 16px;
+  cursor: text;
+  margin-bottom: 17px;
+}
+
+.search-logo {
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.search-logo svg {
+  width: 100%;
+  height: 100%;
+}
