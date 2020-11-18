@@ -5,10 +5,10 @@
 
 # production
 /dist
+/build
 
 # misc
 .DS_Store
 npm-debug.log*
-/package.json
-/build
 package-lock.json
+/api.http
