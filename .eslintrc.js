@@ -22,6 +22,7 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 'off',
     'no-unused-vars': 'off',
     'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': 'off',
+    // 'import/no-extraneous-dependencies': 'off',
+    'linebreak-style': 'off',
   },
 };

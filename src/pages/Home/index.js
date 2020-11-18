@@ -25,7 +25,7 @@ export default function Home() {
         <User />
         <SearchBar />
         <PromoBanner />
-        <Tops tops={tops.slice(0.4)} />
+        <Tops tops={tops.slice(0, 4)} />
       </div>
     </div>
   );
