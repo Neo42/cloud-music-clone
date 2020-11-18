@@ -9,11 +9,11 @@ export default function Home() {
   const [tops, setTops] = useState([]);
   useEffect(() => {
     (async () => {
-      const req = await Axios({
-        url: 'http://8.210.66.180:3000/toplist/detail',
+      const { data: { list } } = await Axios({
+        url: 'https://8.210.66.180:3000/toplist/detail',
         method: 'GET',
       });
-      setTops(req.data.list);
+      setTops(list.slice(0, 4));
     })();
   }, []);
   return (
@@ -25,7 +25,7 @@ export default function Home() {
         <User />
         <SearchBar />
         <PromoBanner />
-        <Tops tops={tops.slice(0, 4)} />
+        <Tops tops={tops} />
       </div>
     </div>
   );
