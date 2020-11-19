@@ -1,5 +1,4 @@
 module.exports = {
-
   env: {
     browser: true,
     es2020: true,
@@ -14,7 +13,6 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-
   plugins: ['react'],
   rules: {
     'jsx-a11y/label-has-associated-control': 'off',
@@ -28,6 +26,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'linebreak-style': 'off',
     'react/state-in-constructor': [2, 'never'],
+    'no-console': 'off',
   },
-
 };
