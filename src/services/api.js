@@ -16,6 +16,15 @@ instance.interceptors.request.use(
 
 export default {
   instance,
+
+  logout() {
+    return instance.get('/logout');
+  },
+
+  getUserInfo(params) {
+    return instance.get('/user/detail', { params });
+  },
+
   getTopLists(params) {
     return instance.get('/toplist/detail', { params });
   },

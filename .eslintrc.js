@@ -1,16 +1,20 @@
 module.exports = {
+
   env: {
     browser: true,
     es2020: true,
   },
   extends: ['plugin:react/recommended', 'airbnb'],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      experimentalObjectRestSpread: true,
     },
     ecmaVersion: 11,
     sourceType: 'module',
   },
+
   plugins: ['react'],
   rules: {
     'jsx-a11y/label-has-associated-control': 'off',
@@ -22,7 +26,8 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 'off',
     'no-unused-vars': 'off',
     'import/no-unresolved': 'off',
-    // 'import/no-extraneous-dependencies': 'off',
     'linebreak-style': 'off',
+    'react/state-in-constructor': [2, 'never'],
   },
+
 };

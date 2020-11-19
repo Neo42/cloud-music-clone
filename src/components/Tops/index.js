@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import api from '../../services/api';
 import TopBrief from '../TopBrief';
 import style from './index.css';
 
-export default function Tops({ tops }) {
+export default function Tops({ tops, setTops }) {
+  useEffect(() => {
+    (async () => {
+      const { data: { list } } = await api.getTopLists({ limit: 4 });
+      setTops(list.slice(0, 4));
+    })();
+  }, []);
   return (
     <div className={style.tops}>
       {tops.map(({
         coverImgUrl, updateFrequency, tracks, name,
       }) => (
-
         <TopBrief
           key={name}
           coverImgUrl={coverImgUrl}
@@ -16,7 +22,6 @@ export default function Tops({ tops }) {
           tracks={tracks}
           name={name}
         />
-
       ))}
     </div>
   );
