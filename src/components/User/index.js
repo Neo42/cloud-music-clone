@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from '../../services/axios';
 import style, { user, avatar, name } from './index.css';
 
-export default function User({ url, username, status }) {
+export default function User({ userProfile, setUserProfile }) {
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { profile },
+      } = await axios.getUserInfo({ uid: 32953014 });
+      setUserProfile(profile);
+    })();
+  }, []);
+
+  const { avatarUrl, nickname, authStatus } = userProfile === null
+    ? { avatarUrl: '', nickname: '', authStatus: false }
+    : userProfile;
+
   return (
     <div className={user}>
       <div className={style['user-info']}>
         <img
           // src={url}
-          src="http://p1.music.126.net/AtHFFy7k1FH5ZqPTCAlQBg==/18587244067659181.jpg"
+          src={avatarUrl}
           alt="Avatar"
           className={avatar}
         />
         <div className={name}>
-          {/* {nickname} */}
-          Dickensian_
+          {nickname}
         </div>
       </div>
       <button type="button">
-        <span>{!status ? '退出登录' : '立即登录'}</span>
+        <span>{authStatus ? '退出登录' : '立即登录'}</span>
       </button>
     </div>
   );

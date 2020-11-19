@@ -1,8 +1,8 @@
 import PromoBanner from './PromoBanner';
 import SearchBar from './SearchBar';
 import User from './User';
-import Tops from './Tops';
+import TopList from './TopList';
 
 export {
-  PromoBanner, SearchBar, User, Tops,
+  PromoBanner, SearchBar, User, TopList,
 };
