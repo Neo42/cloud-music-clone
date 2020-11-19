@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'http://8.210.66.180:3000',
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -15,7 +14,10 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  (res) => res,
+  (response) => {
+    console.info('Response received.');
+    return response;
+  },
   (error) => {
     if (error.response.status === 401) {
       console.error(`Unauthorized: ${error}`);
@@ -27,15 +29,23 @@ instance.interceptors.response.use(
 export default {
   instance,
 
+  loginByPhone(params) {
+    return instance.get('/login/cellphone', { params });
+  },
+
   logout() {
     return instance.get('/logout');
   },
 
-  getUserInfo(params) {
-    return instance.get('/user/detail', { params });
+  getUserProfile({ uid }) {
+    return instance.get('/user/detail', { params: { uid } });
   },
 
-  getTopLists(params) {
-    return instance.get('/toplist/detail', { params });
+  getTopLists({ limit }) {
+    return instance.get('/toplist/detail', { params: { limit } });
+  },
+
+  getPlaylistDetail({ id }) {
+    return instance.get('/playlist/detail', { params: { id } });
   },
 };

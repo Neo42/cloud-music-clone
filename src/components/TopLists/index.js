@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
-import axios from '../../services/axios';
+import React from 'react';
+import axios from '../../services/api';
+import getData from '../../utils/getData';
 import TopBrief from '../TopBrief';
 import style from './index.css';
 
-export default function TopList({ topLists, setTopLists }) {
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { list },
-      } = await axios.getTopLists({ limit: 4 });
-      setTopLists(list.slice(0, 4));
-    })();
-  }, []);
+export default function TopLists({ topLists, setTopLists }) {
+  getData(
+    'list',
+    axios.getTopLists,
+    { limit: 4 },
+    setTopLists,
+  );
   return (
     <div className={style.tops}>
       {topLists.map(({
