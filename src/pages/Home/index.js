@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
 import { home, main } from './index.css';
 import {
   SearchBar, PromoBanner, Tops, User,
 } from '../../components';
+import api from '../../services/api';
 
 export default function Home() {
   const [tops, setTops] = useState([]);
   useEffect(() => {
     (async () => {
-      const { data: { list } } = await Axios({
-        url: 'http://8.210.66.180:3000/toplist/detail',
-        method: 'GET',
-      });
+      const { data: { list } } = await api.getTopLists({ limit: 4 });
       setTops(list.slice(0, 4));
     })();
   }, []);
@@ -21,12 +18,12 @@ export default function Home() {
       <header>
         <h1>网易云音乐</h1>
       </header>
-      <div className={main}>
+      <main className={main}>
         <User />
         <SearchBar />
         <PromoBanner />
         <Tops tops={tops} />
-      </div>
+      </main>
     </div>
   );
 }
