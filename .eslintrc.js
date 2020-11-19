@@ -28,6 +28,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'linebreak-style': 'off',
     'react/state-in-constructor': [2, 'never'],
+    'no-console': 'off',
   },
-
 };
