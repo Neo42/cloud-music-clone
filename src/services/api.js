@@ -14,6 +14,16 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
+instance.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (error.response.status === 401) {
+      console.error(`Unauthorized: ${error}`);
+    }
+    return Promise.reject(error.response);
+  },
+);
+
 export default {
   instance,
 
