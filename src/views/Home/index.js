@@ -9,7 +9,7 @@ import getData from '../../utils/getData';
 
 function Home(props) {
   const {
-    topLists, userProfile, dispatch,
+    topLists, userProfile, dispatch, blocks,
   } = props;
   useEffect(() => {
     getData(
@@ -28,26 +28,36 @@ function Home(props) {
       'setUserProfile',
       dispatch,
     );
+    (async () => {
+      const { data: { data } } = await api.getHomeRecomm();
+      console.log(data);
+      dispatch({
+        type: 'home/setBlocks',
+        data: { blocks: data.blocks },
+      });
+    })();
   }, []);
 
   return (
     <div className={home}>
       <header>
-        <h1>
-          网易云音乐
-        </h1>
+        <h1>网易云音乐</h1>
       </header>
       <main className={main}>
         <User userProfile={userProfile} />
         <SearchBar />
-        <PromoBanner />
+        <PromoBanner block={blocks[0]} />
+        {console.log(blocks[0])}
         <TopLists topLists={topLists.slice(0, 4)} />
       </main>
     </div>
   );
 }
-const mapStateToProps = ({ home: { topLists, userProfile } }) => ({
+const mapStateToProps = ({
+  home: { topLists, userProfile, blocks },
+}) => ({
   topLists,
   userProfile,
+  blocks,
 });
 export default connect(mapStateToProps)(Home);

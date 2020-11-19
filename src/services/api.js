@@ -48,4 +48,7 @@ export default {
   getPlaylistDetail({ id }) {
     return instance.get('/playlist/detail', { params: { id } });
   },
+  getHomeRecomm() {
+    return instance.get('/homepage/block/page');
+  },
 };

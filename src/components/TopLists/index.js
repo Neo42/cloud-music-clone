@@ -6,7 +6,7 @@ export default function TopLists({ topLists }) {
   return (
     <div className={style.tops}>
       {topLists.map((list) => (
-        <TopBrief list={list} />
+        <TopBrief list={list} key={Math.random().toString()} />
       ))}
     </div>
   );

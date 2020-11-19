@@ -3,6 +3,7 @@ export default {
   state: {
     topLists: [],
     userProfile: null,
+    blocks: [],
   },
   reducers: {
     setTopLists(state, { data: { topLists } }) {
@@ -10,6 +11,9 @@ export default {
     },
     setUserProfile(state, { data: { userProfile } }) {
       return { ...state, ...{ userProfile } };
+    },
+    setBlocks(state, { data: { blocks } }) {
+      return { ...state, ...{ blocks } };
     },
   },
 };
