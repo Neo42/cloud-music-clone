@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const { data: { list } } = await Axios({
-        url: 'https://8.210.66.180:3000/toplist/detail',
+        url: 'http://8.210.66.180:3000/toplist/detail',
         method: 'GET',
       });
       setTops(list.slice(0, 4));

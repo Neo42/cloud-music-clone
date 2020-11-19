@@ -12,7 +12,7 @@ export default function TopBrief({
       </div>
       <ol className={style['top-tracks']}>
         {tracks.map(({ first, second }) => (
-          <li className={style['top-track']}>
+          <li className={style['top-track']} key={first}>
             {first}
             {' '}
             -
