@@ -1,9 +1,10 @@
 import React from 'react';
 import style from './index.css';
 
-export default function TopBrief({
-  coverImgUrl, updateFrequency, tracks, name,
-}) {
+export default function TopBrief({ list }) {
+  const {
+    coverImgUrl, updateFrequency, tracks, name,
+  } = list;
   return (
     <div className={style['top-brief']} key={name}>
       <div className={style['top-cover']}>
@@ -11,15 +12,17 @@ export default function TopBrief({
         <span>{updateFrequency}</span>
       </div>
       <ol className={style['top-tracks']}>
-        {tracks.map(({ first, second }) => (
-          <li className={style['top-track']} key={first}>
-            {first}
-            {' '}
-            -
-            {' '}
-            {second}
-          </li>
-        ))}
+        {tracks
+          && tracks.length
+          && tracks.map(({ first, second }) => (
+            <li className={style['top-track']} key={first}>
+              {first}
+              {' '}
+              -
+              {' '}
+              {second}
+            </li>
+          ))}
       </ol>
     </div>
   );

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 
-export default (field, axiosMethod, params, setData) => {
-  useEffect(() => {
-    (async () => {
-      const { data } = await axiosMethod(params);
-      setData(data[field]);
-    })();
-  }, []);
+export default (field, axiosMethod, params, state, reducer, dispatch) => {
+  (async () => {
+    const { data } = await axiosMethod(params);
+    dispatch({
+      type: `home/${reducer}`,
+      data: { [state]: data[field] },
+    });
+  })();
 };

@@ -5,17 +5,9 @@ import getData from '../../utils/getData';
 import style, { user, avatar, name } from './index.css';
 
 export default function User({ userProfile, setUserProfile }) {
-  getData(
-    'profile',
-    api.getUserProfile,
-    { uid: 102283467 },
-    setUserProfile,
-  );
-
   const { avatarUrl, nickname, authStatus } = userProfile === null
     ? { avatarUrl: '', nickname: '', authStatus: false }
     : userProfile;
-
   return userProfile && (
     <div className={user}>
       <div className={style['user-info']}>
