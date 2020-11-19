@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 export default (field, axiosMethod, params, state, reducer, dispatch) => {
   (async () => {
     const { data } = await axiosMethod(params);
