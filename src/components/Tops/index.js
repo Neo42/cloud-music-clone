@@ -3,11 +3,11 @@ import api from '../../services/api';
 import TopBrief from '../TopBrief';
 import style from './index.css';
 
-export default function Tops({ tops, setTops }) {
+export default function Tops({ tops, getTops }) {
   useEffect(() => {
     (async () => {
       const { data: { list } } = await api.getTopLists({ limit: 4 });
-      setTops(list.slice(0, 4));
+      getTops(list.slice(0, 4));
     })();
   }, []);
   return (
