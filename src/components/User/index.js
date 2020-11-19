@@ -16,7 +16,7 @@ export default function User({ userProfile, setUserProfile }) {
     ? { avatarUrl: '', nickname: '', authStatus: false }
     : userProfile;
 
-  return (
+  return userProfile && (
     <div className={user}>
       <div className={style['user-info']}>
         <img src={avatarUrl} alt="Avatar" className={avatar} />
