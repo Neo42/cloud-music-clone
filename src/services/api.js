@@ -29,8 +29,8 @@ instance.interceptors.response.use(
 export default {
   instance,
 
-  loginByPhone(params) {
-    return instance.get('/login/cellphone', { params });
+  loginViaPhoneNumber({ phone, password }) {
+    return instance.get('/login/cellphone', { params: { phone, password } });
   },
 
   logout() {
@@ -48,6 +48,7 @@ export default {
   getPlaylistDetail({ id }) {
     return instance.get('/playlist/detail', { params: { id } });
   },
+
   getHomeRecomm() {
     return instance.get('/homepage/block/page');
   },

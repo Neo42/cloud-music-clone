@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'dva';
-import { home, main } from './index.scss';
+import style, { main } from './index.css';
 import {
   User, SearchBar, PromoBanner, TopLists,
 } from '../../components';
@@ -39,7 +39,7 @@ function Home(props) {
   }, []);
 
   return (
-    <div className={home}>
+    <div className={style['home-page']}>
       <header>
         <h1>网易云音乐</h1>
       </header>

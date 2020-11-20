@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './index.scss';
+import style from './index.css';
 
 export default function PromoBanner({ block }) {
   const { pic, url, typeTitle } = block;

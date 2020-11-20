@@ -1,6 +1,6 @@
 import { Link } from 'dva/router';
 import React from 'react';
-import style, { user, avatar, name } from './index.scss';
+import style, { user, avatar, name } from './index.css';
 
 export default function User({ userProfile }) {
   const { avatarUrl, nickname, authStatus } = userProfile === null

@@ -1,6 +1,6 @@
 import React from 'react';
 import TopBrief from '../TopBrief';
-import style from './index.scss';
+import style from './index.css';
 
 export default function TopLists({ topLists }) {
   return (
