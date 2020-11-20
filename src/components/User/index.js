@@ -1,8 +1,8 @@
 import { Link } from 'dva/router';
 import React from 'react';
-import style, { user, avatar, name } from './index.css';
+import style, { user, avatar, name } from './index.scss';
 
-export default function User({ userProfile, setUserProfile }) {
+export default function User({ userProfile }) {
   const { avatarUrl, nickname, authStatus } = userProfile === null
     ? { avatarUrl: '', nickname: '', authStatus: false }
     : userProfile;
@@ -12,7 +12,7 @@ export default function User({ userProfile, setUserProfile }) {
         <img src={avatarUrl} alt="Avatar" className={avatar} />
         <div className={name}>{nickname}</div>
       </div>
-      <Link to="/user">
+      <Link to="/login">
         <button type="button">
           <span>{authStatus ? '退出登录' : '立即登录'}</span>
         </button>

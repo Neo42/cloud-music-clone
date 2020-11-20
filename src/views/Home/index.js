@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'dva';
-import { home, main } from './index.css';
+import { home, main } from './index.scss';
 import {
   User, SearchBar, PromoBanner, TopLists,
 } from '../../components';
@@ -46,7 +46,7 @@ function Home(props) {
       <main className={main}>
         <User userProfile={userProfile} />
         <SearchBar />
-        <PromoBanner block={blocks[0]} />
+        {/* <PromoBanner block={blocks[0]} /> */}
         {console.log(blocks[0])}
         <TopLists topLists={topLists.slice(0, 4)} />
       </main>

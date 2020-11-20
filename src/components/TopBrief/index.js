@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './index.css';
+import style from './index.scss';
 
 export default function TopBrief({ list }) {
   const {

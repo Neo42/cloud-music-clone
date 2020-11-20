@@ -1,4 +1,7 @@
 import dva from 'dva';
+import { persistEnhancer } from 'dva-model-persist';
+import storage from 'dva-model-persist/lib/storage';
+
 import 'modern-css-reset/dist/reset.min.css';
 import './index.css';
 
@@ -6,7 +9,14 @@ import './index.css';
 const app = dva();
 
 // 2. Plugins
-// app.use({});
+app.use({
+  extraEnhancers: [
+    persistEnhancer({
+      key: 'model',
+      storage,
+    }),
+  ],
+});
 
 // 3. Model
 app.model(require('./models/Home').default);
