@@ -30,7 +30,6 @@ function Home(props) {
     );
     (async () => {
       const { data: { data } } = await api.getHomeRecomm();
-      console.log(data);
       dispatch({
         type: 'home/setBlocks',
         data: { blocks: data.blocks },
@@ -46,16 +45,14 @@ function Home(props) {
       <main className={main}>
         <User userProfile={userProfile} />
         <SearchBar />
-        {/* <PromoBanner block={blocks[0]} /> */}
-        {console.log(blocks[0])}
+        <PromoBanner block={blocks[0].extInfo.banners[0]} />
+        {/* {console.log()} */}
         <TopLists topLists={topLists.slice(0, 4)} />
       </main>
     </div>
   );
 }
-const mapStateToProps = ({
-  home: { topLists, userProfile, blocks },
-}) => ({
+const mapStateToProps = ({ home: { topLists, userProfile, blocks } }) => ({
   topLists,
   userProfile,
   blocks,

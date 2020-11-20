@@ -18,12 +18,7 @@ instance.interceptors.response.use(
     console.info('Response received.');
     return response;
   },
-  (error) => {
-    if (error.response.status === 401) {
-      console.error(`Unauthorized: ${error}`);
-    }
-    return Promise.reject(error.response);
-  },
+  (error) => Promise.reject(error.response),
 );
 
 export default {

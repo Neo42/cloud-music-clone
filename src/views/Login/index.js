@@ -4,8 +4,8 @@ import api from '../../services/api';
 
 export default function Login() {
   const [form, setForm] = useState({ phone: '', password: '' });
-  const handlePhone = (e) => setForm({ ...form, ...{ phone: e.target.value } });
-  const handlePassword = (e) => setForm({ ...form, ...{ password: e.target.value } });
+  const handlePhone = ({ target: { value } }) => setForm({ ...form, ...{ phone: value } });
+  const handlePassword = ({ target: { value } }) => setForm({ ...form, ...{ password: value } });
 
   const login = () => {
     const { phone, password } = form;

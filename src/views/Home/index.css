@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   background-color: #ffffff;
-  height: max-content;
+  height: fit-content;
 }
 
 header {
