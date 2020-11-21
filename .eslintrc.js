@@ -27,5 +27,6 @@ module.exports = {
     'linebreak-style': 'off',
     'react/state-in-constructor': [2, 'never'],
     'no-console': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
