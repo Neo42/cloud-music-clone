@@ -1,11 +1,13 @@
 export default {
   namespace: 'user',
   state: {
-    userProfile: null,
+    userProfile: JSON.parse(localStorage.getItem('user-profile')),
   },
   reducers: {
-    setUserProfile(state, { data: { userProfile } }) {
+    setUserProfile(state, { payload: { userProfile } }) {
+      localStorage.setItem('user-profile', JSON.stringify(userProfile));
       return { ...state, ...{ userProfile } };
     },
+
   },
 };

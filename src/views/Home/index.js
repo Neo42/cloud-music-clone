@@ -6,7 +6,7 @@ import {
 } from '../../components';
 import api from '../../services/api';
 
-function Home({ userProfile }) {
+function Home({ userProfile, history }) {
   const [block, setBlock] = useState(null);
   const [topLists, setTopLists] = useState([]);
 
@@ -25,7 +25,7 @@ function Home({ userProfile }) {
         <h1>网易云音乐</h1>
       </header>
       <main className={main}>
-        <User userProfile={userProfile} />
+        <User userProfile={userProfile} history={history} />
         <SearchBar />
         <PromoBanner block={block && block.extInfo.banners[0]} />
         <TopLists topLists={topLists.slice(0, 4)} />

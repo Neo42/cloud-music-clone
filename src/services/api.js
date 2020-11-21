@@ -8,6 +8,7 @@ export default {
   },
 
   logout() {
+    localStorage.removeItem('user-profile');
     return instance.get('/logout');
   },
 

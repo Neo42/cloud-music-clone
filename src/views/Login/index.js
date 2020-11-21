@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'dva';
 import style from './index.css';
 import api from '../../services/api';
 
-export default function Login() {
+function Login({ userProfile, dispatch, history }) {
+  console.log({ userProfile }, { dispatch });
   const [form, setForm] = useState({ phone: '', password: '' });
   const handlePhone = ({ target: { value } }) => setForm({ ...form, ...{ phone: value } });
   const handlePassword = ({ target: { value } }) => setForm({ ...form, ...{ password: value } });
@@ -18,9 +20,13 @@ export default function Login() {
       const response = await api.loginViaPhoneNumber({ phone, password });
       if (response.data.code === 200) {
         console.log('登录成功！');
-        console.log(response.data);
+        dispatch({
+          type: 'user/setUserProfile',
+          payload: { userProfile: response.data.profile },
+        });
       }
     })();
+    history.push('/');
     return 'Finished';
   };
 
@@ -50,3 +56,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default connect(({ user: { userProfile } }) => ({ userProfile }))(Login);
