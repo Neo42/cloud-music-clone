@@ -3,8 +3,12 @@ import { connect } from 'dva';
 import style from './index.css';
 import api from '../../services/api';
 
-function Login({ userProfile, dispatch, history }) {
-  console.log({ userProfile }, { dispatch });
+/**
+ * TODO:
+ * Switch to Antd mobile
+ * Add toast
+ */
+function Login({ dispatch, history }) {
   const [form, setForm] = useState({ phone: '', password: '' });
   const handlePhone = ({ target: { value } }) => setForm({ ...form, ...{ phone: value } });
   const handlePassword = ({ target: { value } }) => setForm({ ...form, ...{ password: value } });
@@ -15,7 +19,7 @@ function Login({ userProfile, dispatch, history }) {
       console.error('请输入您的电话号码和密码。');
       return undefined;
     }
-    console.log('Logging in...');
+    console.log('正在登录...');
     (async () => {
       const response = await api.loginViaPhoneNumber({ phone, password });
       if (response.data.code === 200) {

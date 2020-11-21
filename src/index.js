@@ -1,11 +1,11 @@
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import dva from 'dva';
 import 'modern-css-reset/dist/reset.min.css';
 import './index.css';
 
 // 1. Initialize
 const app = dva({
-  history: createHistory(),
+  history: createBrowserHistory(),
 });
 
 // 3. Model

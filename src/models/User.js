@@ -8,6 +8,5 @@ export default {
       localStorage.setItem('user-profile', JSON.stringify(userProfile));
       return { ...state, ...{ userProfile } };
     },
-
   },
 };
