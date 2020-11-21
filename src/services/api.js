@@ -1,25 +1,4 @@
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: 'http://8.210.66.180:3000',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  timeout: 5000,
-});
-
-instance.interceptors.request.use(
-  (config) => config,
-  (error) => Promise.reject(error),
-);
-
-instance.interceptors.response.use(
-  (response) => {
-    console.info('Response received.');
-    return response;
-  },
-  (error) => Promise.reject(error.response),
-);
+import instance from '../utils/axios';
 
 export default {
   instance,

@@ -13,7 +13,7 @@ export default function Login() {
       console.error('请输入您的电话号码和密码。');
       return undefined;
     }
-    console.log('Login...');
+    console.log('Logging in...');
     (async () => {
       const response = await api.loginViaPhoneNumber({ phone, password });
       if (response.data.code === 200) {

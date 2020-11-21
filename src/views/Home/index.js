@@ -1,39 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'dva';
 import style, { main } from './index.css';
 import {
   User, SearchBar, PromoBanner, TopLists,
 } from '../../components';
 import api from '../../services/api';
-import getData from '../../utils/getData';
 
-function Home(props) {
-  const {
-    topLists, userProfile, dispatch, blocks,
-  } = props;
+function Home({ userProfile }) {
+  const [block, setBlock] = useState(null);
+  const [topLists, setTopLists] = useState([]);
+
   useEffect(() => {
-    getData(
-      'list',
-      api.getTopLists,
-      { limit: 4 },
-      'topLists',
-      'setTopLists',
-      dispatch,
-    );
-    getData(
-      'profile',
-      api.getUserProfile,
-      { uid: 102283467 },
-      'userProfile',
-      'setUserProfile',
-      dispatch,
-    );
     (async () => {
-      const { data: { data } } = await api.getHomeRecomm();
-      dispatch({
-        type: 'home/setBlocks',
-        data: { blocks: data.blocks },
-      });
+      const { data: { data: { blocks } } } = await api.getHomeRecomm();
+      const { data: { list } } = await api.getTopLists({ limit: 4 });
+      setBlock(blocks[0]);
+      setTopLists(list.slice(0, 4));
     })();
   }, []);
 
@@ -45,16 +27,11 @@ function Home(props) {
       <main className={main}>
         <User userProfile={userProfile} />
         <SearchBar />
-        <PromoBanner block={blocks[0].extInfo.banners[0]} />
-        {/* {console.log()} */}
+        <PromoBanner block={block && block.extInfo.banners[0]} />
         <TopLists topLists={topLists.slice(0, 4)} />
       </main>
     </div>
   );
 }
-const mapStateToProps = ({ home: { topLists, userProfile, blocks } }) => ({
-  topLists,
-  userProfile,
-  blocks,
-});
-export default connect(mapStateToProps)(Home);
+
+export default connect(({ user: { userProfile } }) => ({ userProfile }))(Home);
