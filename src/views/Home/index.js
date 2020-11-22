@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import style, { main } from './index.css';
 import {
   User, SearchBar, PromoBanner, TopLists,
-} from '../../components';
+} from '../../components/Home';
 import api from '../../services/api';
 
 function Home({ userProfile, history }) {

@@ -1,6 +1,6 @@
 import { Link } from 'dva/router';
 import React from 'react';
-import api from '../../services/api';
+import api from '../../../services/api';
 import style, { user, avatar, name } from './index.css';
 
 export default function User({ userProfile, history }) {
