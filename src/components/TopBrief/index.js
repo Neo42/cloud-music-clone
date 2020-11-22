@@ -6,7 +6,7 @@ export default function TopBrief({ list }) {
     coverImgUrl, updateFrequency, tracks, name,
   } = list;
   return (
-    <div className={style['top-brief']} key={name}>
+    <a className={style['top-brief']} key={name} href="#">
       <div className={style['top-cover']}>
         <img src={coverImgUrl} alt={name} />
         <span>{updateFrequency}</span>
@@ -24,6 +24,6 @@ export default function TopBrief({ list }) {
             </li>
           ))}
       </ol>
-    </div>
+    </a>
   );
 }
