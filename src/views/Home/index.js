@@ -6,7 +6,7 @@ import {
 } from '../../components/Home';
 import api from '../../services/api';
 
-function Home({ userProfile, history }) {
+function Home({ userProfile, history, dispatch }) {
   const [block, setBlock] = useState(null);
   const [topLists, setTopLists] = useState([]);
 
