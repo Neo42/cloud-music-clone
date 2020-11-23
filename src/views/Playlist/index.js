@@ -2,6 +2,7 @@ import { connect } from 'dva';
 import React, { useEffect } from 'react';
 import api from '../../services/api';
 import { ListInfo, ListTracks } from '../../components/Playlist';
+import style from './index.css';
 
 function Playlist({ playlistDetail, dispatch, match: { params: { id } } }) {
   useEffect(() => {
@@ -16,8 +17,11 @@ function Playlist({ playlistDetail, dispatch, match: { params: { id } } }) {
 
   return playlistDetail
     ? (
-      <div className="playlist-page">
-        <header><h1>歌单</h1></header>
+      <div className={style['playlist-page']}>
+        <header className={style['playlist-header']}>
+          <div className={style['header-bg']} style={{ background: `url(${playlistDetail.coverImgUrl})` }} />
+          <h1>歌单</h1>
+        </header>
         <ListInfo playlistDetail={playlistDetail} />
         <ListTracks />
       </div>

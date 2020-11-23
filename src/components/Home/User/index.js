@@ -18,13 +18,18 @@ export default function User({ userProfile, history }) {
         {userProfile
           ? <img src={userProfile.avatarUrl} alt="Avatar" className={avatar} />
           : <Avatar />}
-        <div className={name}>{userProfile ? userProfile.nickname : '未登录'}</div>
+        <div className={name}>
+          {userProfile
+            ? userProfile.nickname
+            : '未登录'}
+        </div>
       </div>
-      {userProfile ? (
-        <button type="button" onClick={logout}>
-          <span>退出登录</span>
-        </button>
-      )
+      {userProfile
+        ? (
+          <button type="button" onClick={logout}>
+            <span>退出登录</span>
+          </button>
+        )
         : (
           <Link to="/login">
             <button type="button">

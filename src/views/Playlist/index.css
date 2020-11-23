@@ -1,0 +1,30 @@
+.playlist-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  justify-content: start;
+}
+
+.playlist-header {
+  position: fixed;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.header-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  filter: blur(8px);
+  background: transparent;
+  background-size: 500%;
+}
+
+.playlist-header > h1 {
+  z-index: 999;
+  color: white;
+}

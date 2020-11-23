@@ -8,10 +8,7 @@ export default function TopBrief({ list }) {
   } = list;
 
   return (
-    <Link
-      to={`/playlist/${id}`}
-      key={name}
-    >
+    <Link to={`/playlist/${id}`} key={name}>
       <div className={style['top-brief']}>
         <div className={style['top-cover']}>
           <img src={coverImgUrl} alt={name} />
