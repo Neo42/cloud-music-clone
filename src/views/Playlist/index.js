@@ -13,11 +13,12 @@ function Playlist({ playlistDetail, dispatch, match: { params: { id } } }) {
       });
     })();
   }, []);
+
   return playlistDetail
     ? (
       <div className="playlist-page">
         <header><h1>歌单</h1></header>
-        <ListInfo />
+        <ListInfo playlistDetail={playlistDetail} />
         <ListTracks />
       </div>
     )

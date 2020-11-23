@@ -12,7 +12,6 @@ export default function TopBrief({ list }) {
       to={`/playlist/${id}`}
       key={name}
     >
-      {id}
       <div className={style['top-brief']}>
         <div className={style['top-cover']}>
           <img src={coverImgUrl} alt={name} />

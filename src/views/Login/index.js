@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'dva';
 import { Button, Input } from 'antd';
+import { Redirect } from 'dva/router';
 import style from './index.css';
 import api from '../../services/api';
 
-function Login({ dispatch, history }) {
+function Login({ dispatch, userProfile }) {
   const [form, setForm] = useState({ phone: '', password: '' });
   const handlePhone = ({ target: { value } }) => setForm({ ...form, ...{ phone: value } });
   const handlePassword = ({ target: { value } }) => setForm({ ...form, ...{ password: value } });
@@ -15,6 +16,7 @@ function Login({ dispatch, history }) {
     justifyContent: 'space-between',
     alignItems: 'center',
   };
+
   const login = () => {
     const { phone, password } = form;
     if (phone === '' || password === '') {
@@ -32,13 +34,13 @@ function Login({ dispatch, history }) {
         });
       }
     })();
-    history.push('/');
     return undefined;
   };
 
   const { phone, password } = form;
   return (
     <div className={style['login-page']}>
+      {userProfile && <Redirect to="/" />}
       <header><h1>网易云音乐</h1></header>
       <main className={style.main}>
         <div className={style['phone-input']}>
