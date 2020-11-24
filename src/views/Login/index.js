@@ -1,84 +1,100 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'dva';
-import { Button, Input } from 'antd';
+import {
+  Button, Input, Form, Select,
+} from 'antd';
 import { Redirect } from 'dva/router';
-import style from './index.css';
+import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 
-function Login({ dispatch, userProfile }) {
-  const [form, setForm] = useState({ phone: '', password: '' });
-  const handlePhone = ({ target: { value } }) => setForm({ ...form, ...{ phone: value } });
-  const handlePassword = ({ target: { value } }) => setForm({ ...form, ...{ password: value } });
-  const inputStyle = {
-    marginRight: '-20px',
-    width: 190,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  };
+import 'antd/dist/antd.css';
+import style from './index.css';
 
-  const login = () => {
-    const { phone, password } = form;
-    if (phone === '' || password === '') {
-      console.error('请输入您的电话号码和密码。');
-      return undefined;
-    }
-    console.log('正在登录...');
+const { Option } = Select;
+
+function Login({ dispatch, userProfile }) {
+  const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+  };
+  const login = (values) => {
+    const { phone, password } = values;
     (async () => {
       const response = await api.loginViaPhoneNumber({ phone, password });
       if (response.data.code === 200) {
-        console.log('登录成功！');
         dispatch({
           type: 'user/setUserProfile',
           payload: { userProfile: response.data.profile },
         });
-      }
+      } else Promise.reject(response.data);
     })();
     return undefined;
   };
 
-  const { phone, password } = form;
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
+
+  const [form] = Form.useForm();
+
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select
+        style={{
+          width: 70,
+          height: '100%',
+        }}
+      >
+        <Option value="1">+1</Option>
+        <Option value="86">+86</Option>
+      </Select>
+    </Form.Item>
+  );
+
   return (
     <div className={style['login-page']}>
       {userProfile && <Redirect to="/" />}
       <header><h1>网易云音乐</h1></header>
       <main className={style.main}>
-        <div className={style['phone-input']}>
-          <label htmlFor="phone">
-            手机号码
-          </label>
-          <Input
-            style={inputStyle}
-            allowClear
-            type="text"
-            id="phone"
-            value={phone}
-            onChange={handlePhone}
-          />
-        </div>
-        <div className={style['password-input']}>
-          <label htmlFor="password">
-            密码
-          </label>
-          <Input.Password
-            style={{
-              marginRight: '-20px',
-              width: 190,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePassword}
-          />
-        </div>
-        <div className={style['login-button']}>
-          <Button onClick={login} type="submit">
-            登录
-          </Button>
-        </div>
+        <Form
+          validateStatus="error"
+          form={form}
+          onFinish={login}
+          onFinishFailed={onFinishFailed}
+          name="login"
+          initialValues={{
+            prefix: '86',
+          }}
+          scrollToFirstError
+        >
+          <Form.Item
+            name="phone"
+            rules={[{ required: true, message: '请输入您的手机号码。' }]}
+          >
+            <Input
+              prefix={<PhoneOutlined className="site-form-item-icon" />}
+              placeholder="手机号码"
+              allowClear
+              addonBefore={prefixSelector}
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: '请输入您的密码。' }]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="密码"
+            />
+          </Form.Item>
+          <Form.Item {...tailLayout}>
+            <Button htmlType="submit" className="login-form-button">
+              登录
+            </Button>
+            {' '}
+            <a href="">注册</a>
+          </Form.Item>
+        </Form>
       </main>
     </div>
   );

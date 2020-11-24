@@ -28,5 +28,6 @@ module.exports = {
     'react/state-in-constructor': [2, 'never'],
     'no-console': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

@@ -6,7 +6,7 @@
   justify-content: start;
 }
 
-.playlist-header {
+.playlist-page .playlist-header {
   position: fixed;
   top: 0;
   height: 100px;
@@ -15,16 +15,16 @@
   place-items: center;
 }
 
-.header-bg {
+.playlist-page .header-bg {
   position: absolute;
   height: 100%;
   width: 100%;
-  filter: blur(8px);
   background: transparent;
-  background-size: 500%;
+  background-size: 1000000px 1000000px;
+  filter: blur(30px);
 }
 
-.playlist-header > h1 {
+.playlist-page .playlist-header > h1 {
   z-index: 999;
   color: white;
 }
