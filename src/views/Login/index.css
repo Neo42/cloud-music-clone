@@ -25,24 +25,6 @@ header > h1 {
   align-items: center;
 }
 
-.phone-input,
-.password-input {
-  width: 100%;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.password-input {
-  margin-bottom: 30px;
-}
-
-label {
-  height: 16px;
-  line-height: 16px;
-}
-
 input {
   border: 1px solid #999999;
   outline: none;
@@ -53,34 +35,4 @@ input {
   font-size: 16px;
   background-color: #ffffff;
   transition: 0.3s;
-}
-
-input:focus {
-  border-color: #666666;
-  transform: 0.3s;
-}
-
-.login-button {
-  display: grid;
-  place-items: center;
-}
-
-.login-button > button {
-  margin: 0;
-  border: none;
-  height: 40px;
-  width: 150px;
-  background-color: #f05454;
-  color: #ffffff;
-  transition: 0.3s;
-}
-
-.login-page button > span {
-  font-size: 15px;
-}
-
-.login-button > button:hover,
-.login-button > button:active {
-  background-color: brown;
-  transition: 0.1s;
 }
